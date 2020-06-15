@@ -1,7 +1,7 @@
 #ifndef LOVYANGFX_CONFIG_HPP_
 #define LOVYANGFX_CONFIG_HPP_
 
-#if 0 // TTGO-TM-ESP32
+#if defined( ARDUINO_ESP32_DEV ) // TTGO Wristband
 namespace lgfx
 {
 // for ESP32
@@ -160,7 +160,8 @@ public:
 };
 #endif
 
-#if 1 // TTGO T-Wristband
+#if defined( ARDUINO_ESP32_PICO ) // TTGO Wristband
+
 namespace lgfx
 {
 // for ESP32
@@ -189,40 +190,6 @@ namespace lgfx
 // 省略時は 8 です。大抵のパネルは8ですので、基本的には省略してください。
     static constexpr int spi_dlen = 8;
   };
-
-
-/* 
-// for SAMD51
-  struct LGFX_Config
-  {
-// 使用するSPIのSERCOM番号を設定します。
-    static constexpr int sercom_index = 7;
-
-// SERCOMのクロックソースを設定します。
-// -1を指定した場合、クロックソースを設定せずに動作しますので別途設定を行ってください。
-    static constexpr int sercom_clksrc = 0;   // -1=notchange / 0=select GCLK0
-
-// 上記で設定したクロックソースの動作周波数を設定します。
-// Harmony等で行った設定値をそのまま設定してください。
-    static constexpr int sercom_clkfreq = 120000000;
-
-// SPIのSCLKのピン番号を設定します。 PORTA=0x000 / PORTB=0x100 / PORTC=0x200 / PORTD=0x300…
-    static constexpr int spi_sclk = 0x0100 | 20; // PORTB 20 (PORTB=0x0100)
-
-// SPIのMOSIのピン番号を設定します。
-    static constexpr int spi_mosi = 0x0100 | 19; // PORTB 19 (PORTB=0x0100)
-
-// SPIのMISOのピン番号を設定します。
-    static constexpr int spi_miso = 0x0100 | 18; // PORTB 18 (PORTB=0x0100)
-
-// SPIで使用するTX Padを設定します。
-    static constexpr SercomSpiTXPad pad_mosi = SPI_PAD_3_SCK_1;  // PAD_SPI3_TX;
-
-// SPIで使用するRX Padを設定します。
-    static constexpr SercomRXPad    pad_miso = SERCOM_RX_PAD_2;  // PAD_SPI3_RX;
-  };
-//*/
-
 }
 
 class LGFX : public lgfx::LGFX_SPI<lgfx::LGFX_Config>
