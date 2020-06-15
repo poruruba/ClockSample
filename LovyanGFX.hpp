@@ -87,10 +87,8 @@ Contributors:
 
 #elif defined( LGFX_LOLIN_D32 ) || defined( ARDUINO_LOLIN_D32_PRO ) // LoLin D32 Pro
   #include "config/LGFX_Config_LoLinD32.hpp"
-/*
-#elif defined( LGFX_ESP_WROVER_KIT ) || defined( ARDUINO_ESP32_DEV ) // ESP-WROVER-KIT
+#elif defined( LGFX_ESP_WROVER_KIT ) /* || defined( ARDUINO_ESP32_DEV ) */ // ESP-WROVER-KIT
   #include "config/LGFX_Config_ESP_WROVER_KIT.hpp"
-*/
 #elif defined( LGFX_WIO_TERMINAL ) || defined (ARDUINO_WIO_TERMINAL) || defined(WIO_TERMINAL)
   #include "config/LGFX_Config_WioTerminal.hpp"
 
